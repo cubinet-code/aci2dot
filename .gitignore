@@ -1,0 +1,8 @@
+*.json
+*.dot
+*.pdf
+*.svg
+*.png
+.aci2dot
+.vscode/*
+.vscode/settings.json
