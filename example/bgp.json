@@ -1,0 +1,88 @@
+{
+  "polUni": {
+    "attributes": {
+      "status": "created,modified"
+    },
+    "children": [{
+      "fabricInst": {
+        "attributes": {
+          "status": "created,modified"
+        },
+        "children": [{
+          "bgpInstPol": {
+            "attributes": {
+              "status": "created,modified",
+              "ownerKey": "",
+              "name": "default",
+              "descr": "Default BGP Policy",
+              "nameAlias": "",
+              "ownerTag": "",
+              "annotation": ""
+            },
+            "children": [{
+              "bgpAsP": {
+                "attributes": {
+                  "status": "created,modified",
+                  "name": "",
+                  "descr": "",
+                  "asn": "100",
+                  "nameAlias": "",
+                  "annotation": ""
+                }
+              }
+            }, {
+              "bgpExtRRP": {
+                "attributes": {
+                  "status": "created,modified",
+                  "annotation": "",
+                  "name": "",
+                  "descr": "",
+                  "nameAlias": ""
+                }
+              }
+            }, {
+              "bgpRRP": {
+                "attributes": {
+                  "status": "created,modified",
+                  "annotation": "",
+                  "name": "",
+                  "descr": "",
+                  "nameAlias": ""
+                },
+                "children": [{
+                  "bgpRRNodePEp": {
+                    "attributes": {
+                      "status": "created,modified",
+                      "descr": "",
+                      "podId": "1",
+                      "annotation": "",
+                      "nameAlias": "",
+                      "id": "1101"
+                    }
+                  }
+                }, {
+                  "bgpRRNodePEp": {
+                    "attributes": {
+                      "status": "created,modified",
+                      "descr": "",
+                      "podId": "1",
+                      "annotation": "",
+                      "nameAlias": "",
+                      "id": "1102"
+                    }
+                  }
+                }]
+              }
+            }]
+          }
+        }]
+      }
+    }, {
+      "infraInfra": {
+        "attributes": {
+          "status": "created,modified"
+        }
+      }
+    }]
+  }
+}

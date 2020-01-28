@@ -6,3 +6,4 @@
 .aci2dot
 .vscode/*
 .vscode/settings.json
+!/example/*
