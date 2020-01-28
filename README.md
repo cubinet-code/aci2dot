@@ -2,10 +2,40 @@
 
 aci2dot converts JSON formatted Cisco ACI policy files or snippets to a [DOT](https://en.wikipedia.org/wiki/DOT_(graph_description_language)) graph format.
 
+![ACI Policy Graph](example/bgp.svg "ACI Policy Graph")
+
+## Dependencies
+
 It requires Python 3. [Graphwiz](https://www.graphviz.org) is not required as long as the option --dot is not used.
 When [Graphwiz](https://www.graphviz.org) is installed `--dot {svg,png,pdf}` will also render the graph in the respective format.
 
+## Customisation
+
 `--write` creates a config file `.aci2dot` in the current directory, which allows for modification of the graph, node and edge properties.
+
+The default config is as following:
+```
+  graph [
+    size="8.27";
+    ratio="1";
+    nodesep="0.15";
+    ranksep="0.5"; 
+    #splines="false"; 
+    #rankdir=LR;
+    bgcolor="transparent";
+  ];
+  node [
+    shape=box;
+    style="rounded,filled";
+    fillcolor=AZURE;
+    fontname=Helvetica;
+  ]
+  edge [
+    #arrowsize=0.5;
+  ]
+```
+
+## Full usage
 
 ```
 ./aci2dot.py --help
@@ -27,11 +57,9 @@ optional arguments:
   --dot {svg,png,pdf}  Also write SVG/PNG/PDF. 'dot' needs to be installed.
 ```
 
-For example:
+## Example
 
-![ACI Policy Graph](example/bgp.svg "ACI Policy Graph")
-
-was rendered from:
+The example graph above was rendered from:
 
 ```json
 {
