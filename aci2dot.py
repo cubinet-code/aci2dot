@@ -92,7 +92,7 @@ def main():
   global simple
   global show_attributes
   global gformat
-  parser = argparse.ArgumentParser(description='Export DOT formatted Graph from JSON formatted ACI policy export.\nConvert with: ./aci2dot.py policy.json | dot -o policy.svg -Tsvg')
+  parser = argparse.ArgumentParser(description='Create DOT formatted Graph from JSON formatted ACI policy export.')
   parser.add_argument('policy_file', type=argparse.FileType('r'), help='JSON ACI Policy Filename')
   parser.add_argument('--nr', action='store_true', help='Suppress redundant children')
   parser.add_argument('--na', action='store_true', help="Don't show attributes")
