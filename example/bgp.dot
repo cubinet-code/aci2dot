@@ -1,0 +1,23 @@
+// datetimePol
+digraph {
+	graph [bgcolor=white nodesep=0.25 rankdir=LR ranksep=0.5 ratio=auto size=8.27 splines=true]
+	node [fillcolor=AZURE fontname=Helvetica shape=box style="rounded,filled"]
+	edge [arrowsize=1]
+	polUni0 [label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="1" CELLPADDING="1"><TR><TD ALIGN="LEFT" COLSPAN="2"><B>polUni</B></TD><TD></TD></TR><TR><TD></TD><TD></TD></TR></TABLE>>]
+	polUni0 -> fabricInst1
+	fabricInst1 [label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="1" CELLPADDING="1"><TR><TD ALIGN="LEFT" COLSPAN="2"><B>fabricInst</B></TD><TD></TD></TR><TR><TD></TD><TD></TD></TR></TABLE>>]
+	fabricInst1 -> bgpInstPol1
+	bgpInstPol1 [label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="1" CELLPADDING="1"><TR><TD ALIGN="LEFT" COLSPAN="2"><B>bgpInstPol</B></TD><TD></TD></TR><TR><TD></TD><TD></TD></TR><TR><TD ALIGN="LEFT">name</TD><TD ALIGN="LEFT">: default</TD></TR><TR><TD ALIGN="LEFT">descr</TD><TD ALIGN="LEFT">: Default BGP Policy</TD></TR></TABLE>>]
+	bgpInstPol1 -> bgpAsP1
+	bgpAsP1 [label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="1" CELLPADDING="1"><TR><TD ALIGN="LEFT" COLSPAN="2"><B>bgpAsP</B></TD><TD></TD></TR><TR><TD></TD><TD></TD></TR><TR><TD ALIGN="LEFT">asn</TD><TD ALIGN="LEFT">: 100</TD></TR></TABLE>>]
+	bgpInstPol1 -> bgpExtRRP2
+	bgpExtRRP2 [label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="1" CELLPADDING="1"><TR><TD ALIGN="LEFT" COLSPAN="2"><B>bgpExtRRP</B></TD><TD></TD></TR><TR><TD></TD><TD></TD></TR></TABLE>>]
+	bgpInstPol1 -> bgpRRP3
+	bgpRRP3 [label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="1" CELLPADDING="1"><TR><TD ALIGN="LEFT" COLSPAN="2"><B>bgpRRP</B></TD><TD></TD></TR><TR><TD></TD><TD></TD></TR></TABLE>>]
+	bgpRRP3 -> bgpRRNodePEp1
+	bgpRRNodePEp1 [label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="1" CELLPADDING="1"><TR><TD ALIGN="LEFT" COLSPAN="2"><B>bgpRRNodePEp</B></TD><TD></TD></TR><TR><TD></TD><TD></TD></TR><TR><TD ALIGN="LEFT">podId</TD><TD ALIGN="LEFT">: 1</TD></TR><TR><TD ALIGN="LEFT">id</TD><TD ALIGN="LEFT">: 1101</TD></TR></TABLE>>]
+	bgpRRP3 -> bgpRRNodePEp2
+	bgpRRNodePEp2 [label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="1" CELLPADDING="1"><TR><TD ALIGN="LEFT" COLSPAN="2"><B>bgpRRNodePEp</B></TD><TD></TD></TR><TR><TD></TD><TD></TD></TR><TR><TD ALIGN="LEFT">podId</TD><TD ALIGN="LEFT">: 1</TD></TR><TR><TD ALIGN="LEFT">id</TD><TD ALIGN="LEFT">: 1102</TD></TR></TABLE>>]
+	polUni0 -> infraInfra2
+	infraInfra2 [label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="1" CELLPADDING="1"><TR><TD ALIGN="LEFT" COLSPAN="2"><B>infraInfra</B></TD><TD></TD></TR><TR><TD></TD><TD></TD></TR></TABLE>>]
+}

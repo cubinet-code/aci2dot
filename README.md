@@ -7,8 +7,7 @@ aci2dot converts JSON formatted Cisco ACI policy files or snippets to a [DOT](ht
 ## Dependencies
 
 - Python 3 only 
-- As [Graphwiz](https://www.graphviz.org) is a heavy package, aci2dot has been designed without it being a depency as long as the option `--dot` is not used.
-- When [Graphwiz](https://www.graphviz.org) is installed `--dot {svg,png,pdf}` will also allow rendering the graph in the respective format.
+- pip install -r requirements.txt
 
 ## Customisation
 

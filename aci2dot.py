@@ -12,37 +12,38 @@
 
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
+from __future__ import print_function
 import argparse
 import sys
 import json
 import os
+from graphviz import Digraph
 
 simple = False
 show_attributes = True
-gformat = '''
-  graph [
-    size="8.27";
-    ratio="1";
-    nodesep="0.15";
-    ranksep="0.5";
-    #splines="false";
-    rankdir=LR;
-    bgcolor="transparent";
-  ];
-  node [
-    shape=box;
-    style="rounded,filled";
-    fillcolor=AZURE;
-    fontname=Helvetica;
-  ]
-  edge [
-    #arrowsize=0.5;
-  ]
-  '''
+g_attr = {
+    'graph': {
+        "size": '8.27',
+        "ratio": 'auto',
+        "nodesep": '0.25',
+        "ranksep": '0.5',
+        "bgcolor": 'white',
+        "splines": 'true',
+        "rankdir": 'LR'
+    },
+    'node': {
+        "shape": 'box',
+        "style": 'rounded,filled',
+        "fillcolor": 'AZURE',
+        "fontname": 'Helvetica'
+    },
+    'edge': {
+        "arrowsize": "1"
+    },
+}
 
 
-def format_attr(policy, attr):
+def dot_format_attr(policy, attr):
 
     if not show_attributes:
         return '<<B>{0}</B>>'.format(policy)
@@ -64,7 +65,7 @@ def format_attr(policy, attr):
     return attr_table
 
 
-def iterd(d, i):
+def dot_convert_json(dot, d, i):
 
     for k, v in d.items():
 
@@ -72,10 +73,10 @@ def iterd(d, i):
             attr = v.get("attributes")
 
             if attr:
-                print('{0} [label={1};]'.format(
-                    k + str(i), format_attr(k, attr)))
+                dot.node(k + str(i), dot_format_attr(k, attr))
+
             else:
-                print('{0} [label="{0}";]'.format(k + str(i)))
+                dot.node(k + str(i), k + str(i))
 
             children = v.get("children")
 
@@ -86,21 +87,15 @@ def iterd(d, i):
                         childi = childi + 1
 
                     for childk, childv in child.items():
-                        print('{0} -> {1}'.format(k +
-                                                  str(i), childk + str(childi)))
-                    iterd(child, childi)
-
-
-def write_gformat():
-    with open(".aci2dot", "wt") as text_file:
-        text_file.write(gformat)
+                        dot.edge(k + str(i), childk + str(childi))
+                    dot_convert_json(dot, child, childi)
 
 
 def main():
 
     global simple
     global show_attributes
-    global gformat
+    global g_attr
 
     parser = argparse.ArgumentParser(
         description='Create DOT formatted Graph from JSON formatted ACI policy export.')
@@ -122,7 +117,8 @@ def main():
     args = parser.parse_args()
 
     if args.write:
-        write_gformat()
+        with open(".aci2dot", "wt") as text_file:
+            text_file.write(json.dumps(g_attr))
         sys.exit('Config template written to .aci2dot')
 
     simple = args.nr
@@ -137,21 +133,27 @@ def main():
 
     try:
         with open(".aci2dot", 'r') as config_file:
-            gformat = config_file.read()
+            g_attr = json.loads(config_file.read())
         print("Graph config read from .aci2dot", file=sys.stderr)
     except IOError:
         pass
 
-    if not args.stdout:
-        sys.stdout = open('{0}.dot'.format(base_name), 'w')
+    dot = Digraph(comment='datetimePol', format='svg')
 
-    print('strict digraph Policy {')
-    print(gformat)
-    iterd(data, 0)
-    print('}', flush=True)
+    dot.graph_attr.update(**g_attr['graph'])
+    dot.node_attr.update(**g_attr['node'])
+    dot.edge_attr.update(**g_attr['edge'])
+
+    dot_convert_json(dot, data, 0)
+
+    if args.stdout:
+        print(dot.source)
+    else:
+        with open('{0}.dot'.format(base_name), "wt") as text_file:
+            text_file.write(dot.source)
 
     if args.dot:
-        os.system("dot -T{0} -o{1}.{0} {1}.dot".format(args.dot, base_name))
+        dot.render(base_name, format=args.dot, cleanup=True)
         print("{0} exported to {1}.{0}".format(
             args.dot, base_name), file=sys.stderr)
 
