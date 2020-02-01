@@ -15,24 +15,25 @@ aci2dot converts JSON formatted Cisco ACI policy files or snippets to a [DOT](ht
 
 The default config is as following:
 ```
-  graph [
-    size="8.27";
-    ratio="1";
-    nodesep="0.15";
-    ranksep="0.5"; 
-    #splines="false"; 
-    #rankdir=LR;
-    bgcolor="transparent";
-  ];
-  node [
-    shape=box;
-    style="rounded,filled";
-    fillcolor=AZURE;
-    fontname=Helvetica;
-  ]
-  edge [
-    #arrowsize=0.5;
-  ]
+  {
+  "node": {
+    "shape": "box", 
+    "fontname": "Helvetica", 
+    "style": "rounded,filled", 
+    "fillcolor": "AZURE"
+  }, 
+  "graph": {
+    "rankdir": "LR", 
+    "splines": "true", 
+    "bgcolor": "white", 
+    "ranksep": "0.2", 
+    "dpi": "300", 
+    "nodesep": "0.2"
+  }, 
+  "edge": {
+    "arrowsize": "1"
+  }
+}
 ```
 
 ## Full usage
