@@ -118,7 +118,7 @@ def main():
 
     if args.write:
         with open(".aci2dot", "wt") as text_file:
-            text_file.write(json.dumps(g_attr))
+            text_file.write(json.dumps(g_attr, indent=2))
         sys.exit('Config template written to .aci2dot')
 
     simple = args.nr
