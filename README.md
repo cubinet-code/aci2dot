@@ -15,7 +15,7 @@ aci2dot converts JSON formatted Cisco ACI policy files or snippets to a [DOT](ht
 
 The default config is as following:
 ```
-  {
+{
   "node": {
     "shape": "box", 
     "fontname": "Helvetica", 
