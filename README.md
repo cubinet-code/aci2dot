@@ -2,7 +2,7 @@
 
 aci2dot converts JSON formatted Cisco ACI policy files or snippets to a [DOT](https://en.wikipedia.org/wiki/DOT_(graph_description_language)) graph format.
 
-![ACI Policy Graph](example/bgp.svg "ACI Policy Graph")
+![ACI Policy Graph](example/bgpInstPol.svg "ACI Policy Graph")
 
 ## Dependencies
 

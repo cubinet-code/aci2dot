@@ -1,0 +1,11 @@
+// datetimePol
+digraph {
+	graph [bgcolor=white dpi=300 nodesep=0.2 rankdir=LR ranksep=0.2 splines=true]
+	node [fillcolor=AZURE fontname=Helvetica shape=box style="rounded,filled"]
+	edge [arrowsize=1]
+	bgpInstPol0 [label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="1" CELLPADDING="1"><TR><TD ALIGN="LEFT" COLSPAN="2"><B>bgpInstPol</B></TD><TD></TD></TR><TR><TD></TD><TD></TD></TR><TR><TD ALIGN="LEFT">dn</TD><TD ALIGN="LEFT">: uni/fabric/bgpInstP-..</TD></TR><TR><TD ALIGN="LEFT">name</TD><TD ALIGN="LEFT">: default</TD></TR></TABLE>>]
+	bgpInstPol0 -> bgpRRP1
+	bgpRRP1 [label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="1" CELLPADDING="1"><TR><TD ALIGN="LEFT" COLSPAN="2"><B>bgpRRP</B></TD><TD></TD></TR><TR><TD></TD><TD></TD></TR></TABLE>>]
+	bgpInstPol0 -> bgpExtRRP2
+	bgpExtRRP2 [label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="1" CELLPADDING="1"><TR><TD ALIGN="LEFT" COLSPAN="2"><B>bgpExtRRP</B></TD><TD></TD></TR><TR><TD></TD><TD></TD></TR></TABLE>>]
+}

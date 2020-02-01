@@ -23,13 +23,14 @@ simple = False
 show_attributes = True
 g_attr = {
     'graph': {
-        "size": '8.27',
-        "ratio": 'auto',
-        "nodesep": '0.25',
-        "ranksep": '0.5',
+        # "size": '8.27',
+        # "ratio": 'auto',
+        "nodesep": '0.2',
+        "ranksep": '0.2',
         "bgcolor": 'white',
         "splines": 'true',
-        "rankdir": 'LR'
+        "rankdir": 'LR',
+        "dpi": "300"
     },
     'node': {
         "shape": 'box',
@@ -128,6 +129,9 @@ def main():
         data = json.load(args.policy_file)
     except json.decoder.JSONDecodeError:
         sys.exit('JSON File can not be read.')
+
+    if data.get('imdata'):
+        data = data.get('imdata')[0]
 
     base_name = (os.path.splitext(args.policy_file.name)[0])
 
