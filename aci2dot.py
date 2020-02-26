@@ -82,14 +82,13 @@ def dot_convert_json(dot, d, i):
             children = v.get("children")
 
             if children:
-                childi = 0
                 for child in children:
                     if not simple:
-                        childi = childi + 1
+                        i = i + 1
 
                     for childk, childv in child.items():
-                        dot.edge(k + str(i), childk + str(childi))
-                    dot_convert_json(dot, child, childi)
+                        dot.edge(k + str(i), childk + str(i))
+                    dot_convert_json(dot, child, i)
 
 
 def main():
